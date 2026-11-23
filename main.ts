@@ -1,6 +1,6 @@
 // The Daily Signal, 23 November 2026. Hand-drawn raster graphics; no assets,
 // fonts, network requests, clock reads, or third-party packages at runtime.
-// Run: node main.ts [output.png] (Node 22.18+). Default: output.png.
+// Run: node main.ts [output.png] (Node 22.18+). Default: /output/entry.png.
 // Editorial snapshot, checked 2026-11-23:
 // https://korea.stream/en/world?src=Bloomberg (publisher-linked newswire)
 // https://srihayavadhana.com/newsmriti/headlines/23-november-2026/ (sports)
@@ -267,6 +267,6 @@ const png=Buffer.concat([
   Buffer.from([137,80,78,71,13,10,26,10]), chunk('IHDR',header),
   chunk('IDAT',deflateSync(raw,{level:9})), chunk('IEND',Buffer.alloc(0)),
 ]);
-const output=process.argv[2]??'output.png';
+const output=process.argv[2]??'/output/entry.png';
 writeFileSync(output,png);
 console.log(`Rendered ${W}x${H}: ${output} (${png.length} bytes)`);
